@@ -107,7 +107,8 @@ def get_page_items(url):
     try:
         for item in html.select('td a.head2'):
             item_link = 'https://www.huntstamps.com' + item.get('href').replace('&amp;', '&').strip()
-            items.append(item_link)
+            if item_link not in items:
+                items.append(item_link)
     except:
         pass
 
